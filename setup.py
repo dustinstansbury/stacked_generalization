@@ -18,7 +18,7 @@ setup(
     author_email='https://dustin.stansbury@gmail.com',
     keywords='machine learning, stacked generalization, ensemble methods, classification algorithms',
 
-    install_requires=['numpy',
+    install_requires=['numpy>1.6.1',
                       'scipy',
                       'scikit-learn'
                       ],
