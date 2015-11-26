@@ -3,6 +3,11 @@ Python implementation of stacked generalization classifier, as described [here](
 
 Plays nice with sklearn classifiers, or any model class that has a `fit` and `predict` method.
 
+# Installation 
+Currently the package is not on PyPi, but is easy to install directly from github using the following command.
+
+	pip install -e 'git+http://github.com/dustinstansbury/stacked_generalization.git#egg=stacked_generalization'
+
 # Example usage
 
 	from sklearn.datasets import load_digits
@@ -27,7 +32,7 @@ Plays nice with sklearn classifiers, or any model class that has a `fit` and `pr
 
 	# hold out 20 percent of data for testing accuracy
 	train_prct = 0.8
-	n_train = round(X.shape[0]*train_prct)
+	n_train = int(round(X.shape[0]*train_prct))
 
 	# define base models
 	base_models = [RandomForestClassifier(n_estimators=100, n_jobs=-1, criterion='gini'),
@@ -49,18 +54,29 @@ Plays nice with sklearn classifiers, or any model class that has a `fit` and `pr
 	pred_classes = [np.argmax(p) for p in pred]
 
 	_ = sg.evaluate(y[n_train:], pred_classes)
+           		 precision    recall  f1-score   support
 
-                 precision    recall  f1-score   support
+	          0       1.00      1.00      1.00        31
+	          1       0.95      1.00      0.97        39
+	          2       1.00      1.00      1.00        40
+	          3       1.00      0.97      0.99        38
+	          4       1.00      0.97      0.99        37
+	          5       1.00      0.97      0.99        35
+	          6       1.00      1.00      1.00        32
+	          7       0.95      1.00      0.97        37
+	          8       1.00      0.94      0.97        35
+	          9       0.92      0.94      0.93        35
 
-	          0       0.97      1.00      0.99        33
-	          1       0.97      1.00      0.99        38
-	          2       1.00      1.00      1.00        42
-	          3       1.00      0.98      0.99        41
-	          4       0.97      0.94      0.95        32
-	          5       0.95      0.98      0.96        41
-	          6       1.00      0.95      0.97        37
-	          7       0.94      0.97      0.96        34
-	          8       0.94      0.94      0.94        34
-	          9       0.96      0.96      0.96        27
+    avg / total       0.98      0.98      0.98       359
 
-	avg / total       0.97      0.97      0.97       359
+	Confusion Matrix:
+	[[31  0  0  0  0  0  0  0  0  0]
+	 [ 0 39  0  0  0  0  0  0  0  0]
+	 [ 0  0 40  0  0  0  0  0  0  0]
+	 [ 0  0  0 37  0  0  0  1  0  0]
+	 [ 0  0  0  0 36  0  0  0  0  1]
+	 [ 0  0  0  0  0 34  0  0  0  1]
+	 [ 0  0  0  0  0  0 32  0  0  0]
+	 [ 0  0  0  0  0  0  0 37  0  0]
+	 [ 0  1  0  0  0  0  0  0 33  1]
+	 [ 0  1  0  0  0  0  0  1  0 33]]
