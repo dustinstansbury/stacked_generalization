@@ -10,6 +10,8 @@ Currently the package is not on PyPi, but is easy to install directly from githu
 
 # Example usage
 
+The following example builds a stacked generalizer model to classify the `digits` dataset available in scikits-learn. The three base models (two `RandomForest` classifiers with different optimization criterion, and a `ExtraTreesClassifier`) are estimated with 5-fold cross-validation. The outputs of the fit base models are used as features inputs to the `LogisticRegression` blending model, which is also trained with 5-fold cross-validation. The models are trained on 80 percent of the digits dataset and accuracy is evaluated on the remaining 20 percent.
+
 	from sklearn.datasets import load_digits
 	from stacked_generalizer import StackedGeneralizer
 	from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
