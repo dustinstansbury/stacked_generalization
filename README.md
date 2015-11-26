@@ -1,7 +1,7 @@
 # stacked_generalization
 Python implementation of stacked generalization classifier, as described [here](http://machine-learning.martinsewell.com/ensembles/stacking/). 
 
-Plays nice with sklearn classifiers, or any model classes that has a `fit` and `predict` method.
+Plays nice with sklearn classifiers, or any model classes that hava both `.fit` and `.predict` methods.
 
 # Installation 
 Currently the package is not on PyPi, but is easy to install directly from github via `pip` using the following command.
@@ -54,6 +54,8 @@ Currently the package is not on PyPi, but is easy to install directly from githu
 	pred_classes = [np.argmax(p) for p in pred]
 
 	_ = sg.evaluate(y[n_train:], pred_classes)
+
+	
            		 precision    recall  f1-score   support
 
 	          0       1.00      1.00      1.00        31
