@@ -1,10 +1,10 @@
 # stacked_generalization
 Python implementation of stacked generalization classifier, as described [here](http://machine-learning.martinsewell.com/ensembles/stacking/). 
 
-Plays nice with sklearn classifiers, or any model class that has a `fit` and `predict` method.
+Plays nice with sklearn classifiers, or any model classes that has a `fit` and `predict` method.
 
 # Installation 
-Currently the package is not on PyPi, but is easy to install directly from github using the following command.
+Currently the package is not on PyPi, but is easy to install directly from github via `pip` using the following command.
 
 	pip install -e 'git+http://github.com/dustinstansbury/stacked_generalization.git#egg=stacked_generalization'
 
